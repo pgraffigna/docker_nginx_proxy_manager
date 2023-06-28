@@ -1,6 +1,14 @@
 ---
 version: '3.7'
 
+volumes:
+  npm-data:
+    name: npm-data
+    driver: local
+  mariadb-data:
+    name: mariadb-data
+    driver: local
+
 networks:
   npm-net:
     name: npm-net
@@ -24,8 +32,8 @@ services:
       DB_MYSQL_PASSWORD: ${MYSQL_PASSWORD}
       DB_MYSQL_NAME: ${MYSQL_DATABASE}
     volumes:
-      - /npm_data:/data
-      - /npm_data/letsencrypt:/etc/letsencrypt
+      - npm-data:/data
+      - npm-data:/etc/letsencrypt
     depends_on:
       - db
 
@@ -41,4 +49,4 @@ services:
       MYSQL_USER: ${MYSQL_USER}
       MYSQL_PASSWORD: ${MYSQL_PASSWORD}
     volumes:
-      - /mariadb_data/:/var/lib/mysql
+      - mariadb-data/:/var/lib/mysql

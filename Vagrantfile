@@ -1,10 +1,6 @@
 ENV['VAGRANT_DEFAULT_PROVIDER'] = 'libvirt'
 IMAGEN = "generic/ubuntu2004"
-
-$script = <<-SCRIPT
-        sudo apt-get update
-        sudo apt-get install -y docker-compose
-SCRIPT
+HOSTNAME = "nginx-proxy"
 
 Vagrant.configure("2") do |config|
   config.ssh.insert_key = false
@@ -12,11 +8,10 @@ Vagrant.configure("2") do |config|
 
   config.vm.define :server do |s|
     s.vm.box = IMAGEN
-    s.vm.hostname = "testing"
+    s.vm.hostname = HOSTNAME
     s.vm.provision :docker
-    s.vm.provision "shell", inline: $script
-
-    s.vm.provider :libvirt do |v| 
+    s.vm.provision :docker_compose
+    s.vm.provider :libvirt do |v|
       v.memory = 1024
       v.cpus = 2
     end
