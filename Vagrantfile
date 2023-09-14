@@ -12,8 +12,9 @@ Vagrant.configure("2") do |config|
     s.vm.provision :docker
     s.vm.provision :docker_compose
     s.vm.provider :libvirt do |v|
-      v.memory = 1024
+      v.memory = 2048
       v.cpus = 2
+      v.graphics_type = 'none'
     end
   end
 end
