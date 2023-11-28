@@ -23,10 +23,8 @@ services:
       DB_MYSQL_PASSWORD: ${MYSQL_PASSWORD}
       DB_MYSQL_NAME: ${MYSQL_DATABASE}
     volumes:
-      - type: bind
-        source: ./98-themepark-npm # chmod +x 98-themepark-npm
-        target: /etc/cont-init.d/99-themepark
-        read_only: true
+      - ./98-themepark-npm:/etc/cont-init.d/99-themepark:ro # chmod +x 98-themepark-npm antes de levantar contenedores
+      - ./block-exploits.conf:/etc/nginx/conf.d/include/block-exploits.conf
       - ./npm-data:/data
       - ./npm-data:/etc/letsencrypt
     depends_on:
