@@ -25,8 +25,8 @@ services:
     volumes:
       - ./98-themepark-npm:/etc/cont-init.d/99-themepark:ro # chmod +x 98-themepark-npm antes de levantar contenedores
       - ./block-exploits.conf:/etc/nginx/conf.d/include/block-exploits.conf
-      - ./npm-data:/data
-      - ./npm-data:/etc/letsencrypt
+      - ./npm-data/data:/data
+      - ./npm-data/certs:/etc/letsencrypt
     depends_on:
       - db
 
@@ -42,7 +42,7 @@ services:
       MYSQL_USER: ${MYSQL_USER}
       MYSQL_PASSWORD: ${MYSQL_PASSWORD}
     volumes:
-      - ./mariadb-data/:/var/lib/mysql
+      - ./mariadb-data:/var/lib/mysql
 
   goaccess:
     image: 'xavierh/goaccess-for-nginxproxymanager:latest'

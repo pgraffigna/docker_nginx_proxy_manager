@@ -1,6 +1,6 @@
 ENV['VAGRANT_DEFAULT_PROVIDER'] = 'libvirt'
-IMAGEN = "generic/ubuntu2004"
-HOSTNAME = "nginx-proxy"
+IMAGEN = "generic/ubuntu2204"
+HOSTNAME = "npm.home.local"
 
 Vagrant.configure("2") do |config|
   config.ssh.insert_key = false
