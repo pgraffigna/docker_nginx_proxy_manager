@@ -22,6 +22,8 @@ services:
       DB_MYSQL_USER: ${MYSQL_USER}
       DB_MYSQL_PASSWORD: ${MYSQL_PASSWORD}
       DB_MYSQL_NAME: ${MYSQL_DATABASE}
+      INITIAL_ADMIN_EMAIL: ${INITIAL_ADMIN_EMAIL}
+      INITIAL_ADMIN_PASSWORD: ${INITIAL_ADMIN_PASSWORD}
     volumes:
       - ./98-themepark-npm:/etc/cont-init.d/99-themepark:ro # chmod +x 98-themepark-npm antes de levantar contenedores
       - ./block-exploits.conf:/etc/nginx/conf.d/include/block-exploits.conf
@@ -46,7 +48,7 @@ services:
 
   goaccess:
     image: 'xavierh/goaccess-for-nginxproxymanager:latest'
-    container_name: npm-dashboard
+    container_name: dashboard
     networks:
       - npm-net
     restart: unless-stopped
@@ -61,4 +63,4 @@ services:
       - ./npm-data/logs:/opt/log
     depends_on:
       - npm
-  
+

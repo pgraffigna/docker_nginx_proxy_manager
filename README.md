@@ -2,7 +2,7 @@
 
 Docker-compose para desplegar un servidor nginx-proxy-manager + dashboard con metricas + modo oscuro + archivo con listado de anti-crawlers.
 
-Testeado con qemu + ubuntu2204 + vagrant 
+Testeado con qemu + ubuntu2204 + vagrant
 
 ---
 
@@ -17,8 +17,7 @@ El proyecto cuenta con los archivos necesarios para levantar usando docker un se
 * [Vagrant](https://developer.hashicorp.com/vagrant/install) (opcional)
 
 ### Uso
-
-```
+```shell
 git clone https://github.com/pgraffigna/docker_nginx_proxy_manager.git
 cd docker_nginx_proxy_manager
 docker-compose up -d
@@ -33,7 +32,7 @@ docker-compose up -d
 
 ---
 ### Uso Vagrant
-```
+```shell
 vagrant up
 vagrant ssh
 ```
