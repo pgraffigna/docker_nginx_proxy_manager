@@ -1,5 +1,5 @@
 ENV['VAGRANT_DEFAULT_PROVIDER'] = 'libvirt'
-IMAGEN = "generic/ubuntu2204"
+IMAGEN = "boxen/ubuntu-24.04"
 HOSTNAME = "npm.home.local"
 
 Vagrant.configure("2") do |config|
@@ -11,6 +11,7 @@ Vagrant.configure("2") do |config|
     s.vm.hostname = HOSTNAME
     s.vm.provision :docker
     s.vm.provision :docker_compose
+
     s.vm.provider :libvirt do |v|
       v.disk_bus = 'virtio'
       v.memory = 2048
