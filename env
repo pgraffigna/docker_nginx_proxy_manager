@@ -1,10 +1,24 @@
+# db
 MYSQL_ROOT_PASSWORD=mysql_root_password
 MYSQL_DATABASE=npm_db
 MYSQL_USER=npm_user
 MYSQL_PASSWORD=npm_pass
+
+# dashboard
 BASIC_AUTH=True
 BASIC_AUTH_USERNAME=testing
 BASIC_AUTH_PASSWORD=password123!
+
+# npm
 INITIAL_ADMIN_EMAIL=testing@home.local
 INITIAL_ADMIN_PASSWORD=changeme
 
+# S3
+AWS_S3_BUCKET_NAME=bucket-15
+AWS_ACCESS_KEY_ID=aaaaaaaaaaaaaaa
+AWS_SECRET_ACCESS_KEY=bbbbbbbbbbbbbbbbbbbb
+AWS_ENDPOINT=s3.com
+
+# telegram
+TELEGRAM_TOKEN=aaaaaaaa-aaaaaaaaaa
+TELEGRAM_CHAT_ID=-1111
