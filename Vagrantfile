@@ -1,5 +1,5 @@
 ENV['VAGRANT_DEFAULT_PROVIDER'] = 'libvirt'
-IMAGEN = "boxen/ubuntu-24.04"
+IMAGEN = "alvistack/ubuntu-24.04"
 HOSTNAME = "npm.home.local"
 
 Vagrant.configure("2") do |config|
