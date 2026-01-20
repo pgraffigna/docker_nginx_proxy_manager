@@ -1,6 +1,6 @@
 # docker_nginx_proxy_manager
 
-Docker-compose para desplegar un servidor nginx-proxy-manager + dashboard con metricas + modo oscuro + archivo con listado de anti-crawlers.
+Docker-compose para desplegar un servidor nginx-proxy-manager + dashboard con metricas + archivo con listado de anti-crawlers.
 
 Testeado con qemu + ubuntu2404 + vagrant
 
@@ -25,6 +25,5 @@ docker-compose up -d
 
 ### Extras
 * Vagrantfile: Archivo de configuración para desplegar una VM descartable con ubuntu-22.04 con libvirt como hipervisor.
-* 98-themepark-npm: dark mode
 * block-exploits.conf: anti-crawlers
 * env: variables de entorno

@@ -32,6 +32,11 @@ services:
       start_period: 60s
     labels:
       - 'autoheal=true'
+    logging:
+      driver: 'json-file'
+      options:
+        max-size: '50m'
+        max-file: '3'
 
   db:
     image: 'jc21/mariadb-aria:${MYSQL_VERSION}'
@@ -54,6 +59,11 @@ services:
       start_period: 80s
     labels:
       - 'autoheal=true'
+    logging:
+      driver: 'json-file'
+      options:
+        max-size: '50m'
+        max-file: '3'
 
   goaccess:
     image: 'xavierh/goaccess-for-nginxproxymanager:${GOACCESS_VERSION}'
@@ -88,6 +98,11 @@ services:
       start_period: 30s
     labels:
       - 'autoheal=true'
+    logging:
+      driver: 'json-file'
+      options:
+        max-size: '10m'
+        max-file: '3'
 
   backup:
     image: offen/docker-volume-backup:v2
@@ -112,6 +127,11 @@ services:
       - ./mariadb-data:/backup/mariadb-backup:ro
       - ./npm-data:/backup/npm-data-backup:ro
       - /var/run/docker.sock:/var/run/docker.sock:ro
+    logging:
+      driver: 'json-file'
+      options:
+        max-size: '10m'
+        max-file: '3'
 
   autoheal:
     image: willfarrell/autoheal:latest
@@ -125,33 +145,11 @@ services:
       - /var/run/docker.sock:/var/run/docker.sock
     networks:
       - npm-net
-
-  logrotate:
-    image: 'blacklabelops/logrotate:${LOG_VERSION}'
-    container_name: proxymanager-logrotate
-    networks:
-      - npm-net
-    volumes:
-      - ./npm-data:/var/log/npm-data
-      - ./mariadb-data:/var/log/mariadb-data
-      - ./logrotate-logs:/logs
-    environment:
-      LOGS_DIRECTORIES: /var/log/npm-data /var/log/mariadb-data
-      LOGROTATE_STATUSFILE: /var/log/logrotate/logrotate.status
-      LOGROTATE_INTERVAL: daily
-      LOGROTATE_COPIES: 7
-      LOGROTATE_SIZE: 50M
-      LOGROTATE_COMPRESSION: compress
-      LOG_FILE_ENDINGS: log
-      LOGROTATE_OLDDIR: /logs
-      LOGROTATE_DATEFORMAT: '-%Y%m%d'
-      TZ: ${TZ}
-    restart: unless-stopped
-    depends_on:
-      npm:
-        condition: service_healthy
-      db:
-        condition: service_healthy
+    logging:
+      driver: 'json-file'
+      options:
+        max-size: '10m'
+        max-file: '3'
 
 networks:
   npm-net:
