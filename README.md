@@ -24,6 +24,5 @@ docker-compose up -d
 ```
 
 ### Extras
-* Vagrantfile: Archivo de configuración para desplegar una VM descartable con ubuntu-22.04 con libvirt como hipervisor.
-* block-exploits.conf: anti-crawlers
+* Vagrantfile: Archivo de configuración para desplegar una VM descartable con ubuntu-24.04 con libvirt como hipervisor.
 * env: variables de entorno
